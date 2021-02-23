@@ -1,17 +1,27 @@
-import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import React, {useEffect} from 'react';
+import {FlatList, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ShopCard} from '../components';
+import {useFireStoreCol} from '../hooks';
 
 export const Shop = () => {
+  const productsData = useFireStoreCol('products').collection;
+
   return (
     <SafeAreaView style={styles.container}>
-      <ShopCard
-        image="https://images.carriercms.com/image/upload/w_500,h_400,c_fill,g_center,q_auto,f_auto/v1543516192/carrier/carrier-global/food/bananas.jpg"
-        name="Organic Bananas"
-        price="4.99"
-        id=""
-        perItemWeight="7pc, Priceg"
+      <FlatList
+        data={productsData}
+        renderItem={({index, item}) => (
+          <ShopCard
+            image={item.images[0]}
+            name={item.name}
+            price={item.price}
+            id={item.id}
+            perItemWeight={item.perItemWeight}
+          />
+        )}
+        keyExtractor={(item) => item.id}
+        horizontal
       />
     </SafeAreaView>
   );
