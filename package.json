@@ -10,11 +10,11 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^10.8.0",
+    "@react-native-firebase/firestore": "^10.8.0",
     "@react-navigation/bottom-tabs": "^5.11.8",
     "@react-navigation/native": "^5.9.3",
     "@react-navigation/stack": "^5.14.3",
-    "@react-native-firebase/app": "^10.8.0",
-    "@react-native-firebase/firestore": "^10.8.0",
     "firebase": "^8.2.9",
     "react": "16.13.1",
     "react-native": "0.63.4",
