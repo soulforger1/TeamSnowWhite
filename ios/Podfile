@@ -21,6 +21,9 @@ target 'TeamSnowWhite' do
   post_install do |installer|
     flipper_post_install(installer)
   end
+  
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
 end
 
 target 'TeamSnowWhite-tvOS' do

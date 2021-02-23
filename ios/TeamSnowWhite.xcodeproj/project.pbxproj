@@ -18,7 +18,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* TeamSnowWhiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TeamSnowWhiteTests.m */; };
 		3DD6194D4CD6C75039563112 /* libPods-TeamSnowWhite-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2BC119FEDF010BC01B01CF /* libPods-TeamSnowWhite-tvOS.a */; };
 		3FAA42244D5417357ED6E849 /* libPods-TeamSnowWhite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C89B8D17C5FC1F8B84DC9220 /* libPods-TeamSnowWhite.a */; };
-		51D3440F25E39FAA008FF599 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51D3440E25E39FAA008FF599 /* GoogleService-Info.plist */; };
+		47EBFDE625E51AFF00FAF657 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47EBFDE525E51AFF00FAF657 /* GoogleService-Info.plist */; };
 		5663C20B5F57886678E980B4 /* libPods-TeamSnowWhite-TeamSnowWhiteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B18D3DC84F04F7E84F6491 /* libPods-TeamSnowWhite-TeamSnowWhiteTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -57,7 +57,7 @@
 		2D02E47B1E0B4A5D006451C7 /* TeamSnowWhite-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TeamSnowWhite-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* TeamSnowWhite-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TeamSnowWhite-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		375A9F78CC6400F6C9893BA3 /* Pods-TeamSnowWhite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamSnowWhite.release.xcconfig"; path = "Target Support Files/Pods-TeamSnowWhite/Pods-TeamSnowWhite.release.xcconfig"; sourceTree = "<group>"; };
-		51D3440E25E39FAA008FF599 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		47EBFDE525E51AFF00FAF657 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "TeamSnowWhite/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52D87F700B5FF0A12B2665B6 /* Pods-TeamSnowWhite-TeamSnowWhiteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamSnowWhite-TeamSnowWhiteTests.debug.xcconfig"; path = "Target Support Files/Pods-TeamSnowWhite-TeamSnowWhiteTests/Pods-TeamSnowWhite-TeamSnowWhiteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5EFC45FC2B2C6CFF97912414 /* Pods-TeamSnowWhite-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamSnowWhite-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-TeamSnowWhite-tvOS/Pods-TeamSnowWhite-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TeamSnowWhite/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		13B07FAE1A68108700A75B9A /* TeamSnowWhite */ = {
 			isa = PBXGroup;
 			children = (
-				51D3440E25E39FAA008FF599 /* GoogleService-Info.plist */,
+				47EBFDE525E51AFF00FAF657 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -345,7 +345,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				51D3440F25E39FAA008FF599 /* GoogleService-Info.plist in Resources */,
+				47EBFDE625E51AFF00FAF657 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
