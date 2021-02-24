@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "140727784351",
+    "project_id": "teamsnowwhite-9e995",
+    "storage_bucket": "teamsnowwhite-9e995.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140727784351:android:a1906f1f7d4ce377e0a3aa",
+        "android_client_info": {
+          "package_name": "com.teamsnowwhite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "140727784351-rvokieblapccjpm6etdrfdk48qj4u0r3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCr2wEcvOXFdFh_Oj3ml7fUl0nzhhhRiY8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "140727784351-rvokieblapccjpm6etdrfdk48qj4u0r3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "140727784351-5mgu17pqos6urepk30gvc46l6v20jd6t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.TeamSnowWhite"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
