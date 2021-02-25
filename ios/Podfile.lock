@@ -600,14 +600,14 @@ PODS:
     - React-Core (= 0.63.4)
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
-  - RNFBApp (10.8.1):
+  - RNFBApp (10.8.0):
     - Firebase/CoreOnly (~> 7.6.0)
     - React-Core
-  - RNFBFirestore (10.8.1):
+  - RNFBFirestore (10.8.0):
     - Firebase/Firestore (~> 7.6.0)
     - React-Core
     - RNFBApp
-  - RNGestureHandler (1.10.1):
+  - RNGestureHandler (1.10.2):
     - React-Core
   - RNScreens (2.17.1):
     - React-Core
@@ -828,9 +828,9 @@ SPEC CHECKSUMS:
   React-RCTText: 5c51df3f08cb9dedc6e790161195d12bac06101c
   React-RCTVibration: ae4f914cfe8de7d4de95ae1ea6cc8f6315d73d9d
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
-  RNFBApp: 02bde3edecf2e9694b908a5d3504e03449980f20
-  RNFBFirestore: 337b96bf5b1b2d32bb9fc4735afd47b16532dde8
-  RNGestureHandler: 5e58135436aacc1c5d29b75547d3d2b9430d052c
+  RNFBApp: 97b618641633d6d23187a9d0537c3893482c483f
+  RNFBFirestore: 859fc78b3dc89ef10e430b39cd9f14e07ef4e158
+  RNGestureHandler: e66feb0fda7da74ea6a3094656b3c1efe05f5c07
   RNScreens: b6c9607e6fe47c1b6e2f1910d2acd46dd7ecea3a
   RNSharedElement: 00b1a1420d213a34459bb9a5aacabb38107d7948
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
