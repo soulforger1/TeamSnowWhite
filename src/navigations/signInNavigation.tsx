@@ -8,7 +8,6 @@ const Stack = createStackNavigator();
 export const SignInNavigation = () => {
   return (
     <View style={{flex: 1}}>
-      <StatusBar barStyle="dark-content" />
       <Stack.Navigator headerMode="none">
         <Stack.Screen name="step-starts" component={SignInStarts} />
         <Stack.Screen name="step-1" component={SignInStep1} />

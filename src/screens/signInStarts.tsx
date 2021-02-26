@@ -3,6 +3,7 @@ import React from 'react';
 import {
   Dimensions,
   ImageBackground,
+  StatusBar,
   StyleSheet,
   Text,
   View,
@@ -16,6 +17,7 @@ export const SignInStarts = () => {
   const navigation = useNavigation();
   return (
     <ImageBackground source={background} style={styles.main}>
+      <StatusBar barStyle="light-content" />
       <View style={styles.container}>
         <CarrotIcon />
         <Text style={styles.titleBig}>Welcome to our store</Text>

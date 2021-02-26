@@ -4,6 +4,7 @@ import {
   Dimensions,
   Image,
   StyleSheet,
+  StatusBar,
   Text,
   View,
 } from 'react-native';
@@ -58,6 +59,7 @@ export const SignInStep1 = () => {
 
   return (
     <View style={styles.main}>
+      <StatusBar barStyle="dark-content" />
       <Animated.Image
         source={background1}
         blurRadius={isFocused ? 30 : 0}
