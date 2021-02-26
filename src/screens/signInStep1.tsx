@@ -8,16 +8,19 @@ import {
   View,
 } from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
+import auth from '@react-native-firebase/auth';
 import {BackIcon} from '../assets';
 import {Separator} from '../components';
+import {useNavigation} from '@react-navigation/native';
 const background1 = require('../assets/sign-in-1.png');
 const background2 = require('../assets/sign-in-3.png');
 const mongolia = require('../assets/mongoliaFlag.png');
 const {width} = Dimensions.get('window');
 
 export const SignInStep1 = () => {
+  const navigation = useNavigation();
   const animationValue = useRef(new Animated.Value(0)).current;
-  const [confirm, setConfirm] = useState(null);
+  const [confirm, setConfirm] = useState<any>(null);
   const [phone, setPhone] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const opacity = animationValue.interpolate({
@@ -29,6 +32,12 @@ export const SignInStep1 = () => {
     outputRange: [0, -360],
   });
   var inputRef = useRef<any>(null);
+
+  const signInWithPhone = async () => {
+    const confirmation = await auth().signInWithPhoneNumber('+976' + phone);
+    setConfirm(confirmation);
+    navigation.navigate('step-2', {confirm: confirmation});
+  };
 
   useEffect(() => {
     if (isFocused) {
@@ -106,8 +115,18 @@ export const SignInStep1 = () => {
           styles.nextButton,
           isFocused ? {display: 'flex'} : {display: 'none'},
         ]}>
-        <TouchableOpacity>
-          <BackIcon color="white" />
+        <TouchableOpacity onPress={() => signInWithPhone()}>
+          <View
+            style={{
+              height: 67,
+              width: 67,
+              backgroundColor: '#53B175',
+              borderRadius: 50,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <BackIcon color="white" />
+          </View>
         </TouchableOpacity>
       </View>
       <Image source={background2} blurRadius={90} style={styles.background2} />
@@ -134,6 +153,7 @@ const styles = StyleSheet.create({
     bottom: 10,
     height: 200,
     opacity: 0.45,
+    zIndex: 0,
   },
   inputContainer: {
     height: 100,
@@ -159,15 +179,10 @@ const styles = StyleSheet.create({
     height: 25,
   },
   nextButton: {
-    height: 67,
-    width: 67,
-    backgroundColor: '#53B175',
-    borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
     transform: [{rotate: '180deg'}],
     position: 'absolute',
     bottom: 40,
     right: 40,
+    zIndex: 1,
   },
 });

@@ -6,4 +6,3 @@ export * from './shop';
 export * from './signInStep1';
 export * from './signInStep2';
 export * from './signInStep3';
-export * from './signInStep4';
