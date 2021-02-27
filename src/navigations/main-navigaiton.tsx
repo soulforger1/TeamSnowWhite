@@ -7,8 +7,8 @@ const Stack = createSharedElementStackNavigator();
 export const MainNavigaiton = () => {
   return (
     <Stack.Navigator headerMode="none">
-      <Stack.Screen name="sign-in" component={SignInNavigation} />
       <Stack.Screen name="main" component={BottomNavigation} />
+      <Stack.Screen name="sign-in" component={SignInNavigation} />
     </Stack.Navigator>
   );
 };

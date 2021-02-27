@@ -1,5 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {PlusIcon} from '../assets';
+import {cartContext} from '../provider/';
 
 interface Props {
   image: string;
@@ -16,6 +19,12 @@ export const ShopCard: React.FC<Props> = ({
   id,
   perItemWeight,
 }) => {
+  const {cart, setCart} = useContext<any>(cartContext);
+  const addCart = () => {
+    const data = {id, number: 1, price: price};
+    setCart((cart: any) => ({...cart, [id]: data}));
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -25,13 +34,19 @@ export const ShopCard: React.FC<Props> = ({
       <Text style={styles.perItemWeight}>{perItemWeight}</Text>
       <View style={styles.priceContainer}>
         <Text style={styles.price}>${price}</Text>
-        <View
-          style={{
-            height: 45,
-            width: 45,
-            backgroundColor: '#53B175',
-            borderRadius: 17,
-          }}></View>
+        <TouchableOpacity onPress={() => addCart()}>
+          <View
+            style={{
+              height: 45,
+              width: 45,
+              backgroundColor: '#53B175',
+              borderRadius: 17,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <PlusIcon />
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );

@@ -1,15 +1,19 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
-export const Separator = () => {
+interface Props {
+  width?: number;
+}
+
+export const Separator: React.FC<Props> = ({width = 364}) => {
+  const styles = StyleSheet.create({
+    main: {
+      width: width,
+      height: 0,
+      borderWidth: 1,
+      borderColor: '#E2E2E2',
+    },
+  });
+
   return <View style={styles.main}></View>;
 };
-
-const styles = StyleSheet.create({
-  main: {
-    width: 364,
-    height: 0,
-    borderWidth: 1,
-    borderColor: '#E2E2E2',
-  },
-});
