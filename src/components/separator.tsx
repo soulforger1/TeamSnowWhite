@@ -10,7 +10,7 @@ export const Separator: React.FC<Props> = ({width = 364}) => {
     main: {
       width: width,
       height: 0,
-      borderWidth: 1,
+      borderWidth: 0.5,
       borderColor: '#E2E2E2',
     },
   });

@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useContext, useEffect} from 'react';
 import {Dimensions, FlatList, StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -9,6 +10,7 @@ const {width} = Dimensions.get('window');
 
 export const Cart = () => {
   const {cart, payment, setPayment} = useContext<any>(cartContext);
+  const navigation = useNavigation();
 
   useEffect(() => {
     var sum = 0;
@@ -28,7 +30,9 @@ export const Cart = () => {
         renderItem={({item, index}: any) => <CartCard id={item.id} />}
         ItemSeparatorComponent={() => <Separator />}
       />
-      <TouchableOpacity style={{width: 364, height: 70}}>
+      <TouchableOpacity
+        style={{width: 364, height: 70}}
+        onPress={() => navigation.navigate('checkout-modal', {cost: payment})}>
         <View style={styles.button}>
           <Text style={{fontSize: 19, fontWeight: '500', color: 'white'}}>
             Go to Checkout
