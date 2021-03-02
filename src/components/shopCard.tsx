@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useContext} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -19,7 +20,8 @@ export const ShopCard: React.FC<Props> = ({
   id,
   perItemWeight,
 }) => {
-  const {cart, setCart} = useContext<any>(cartContext);
+  const navigation = useNavigation();
+  const {setCart} = useContext<any>(cartContext);
   const addCart = () => {
     const data = {id, number: 1, price: price};
     setCart((cart: any) => ({...cart, [id]: data}));
@@ -27,11 +29,14 @@ export const ShopCard: React.FC<Props> = ({
 
   return (
     <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <Image source={{uri: image}} style={styles.image} />
-      </View>
-      <Text style={styles.name}>{name}</Text>
-      <Text style={styles.perItemWeight}>{perItemWeight}</Text>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('product-detail', {id})}>
+        <View style={styles.imageContainer}>
+          <Image source={{uri: image}} style={styles.image} />
+        </View>
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.perItemWeight}>{perItemWeight}</Text>
+      </TouchableOpacity>
       <View style={styles.priceContainer}>
         <Text style={styles.price}>${price}</Text>
         <TouchableOpacity onPress={() => addCart()}>

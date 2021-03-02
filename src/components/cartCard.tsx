@@ -4,6 +4,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {CloseIcon, MinusIcon, PlusIcon} from '../assets';
 import {useFireStoreDoc} from '../hooks';
 import {cartContext} from '../provider';
+import {PerNumber} from './perNumber';
 const {width} = Dimensions.get('window');
 
 interface Props {
@@ -21,13 +22,13 @@ export const CartCard: React.FC<Props> = ({id}) => {
     perItemWeight: '',
   });
 
-  const minusButotn = () => {
+  const minusFunction = () => {
     if (cart[id].number !== 1) {
       const data = {id, number: cart[id].number - 1, price: cart[id].price};
       setCart((cart: any) => ({...cart, [id]: data}));
     }
   };
-  const plusButton = () => {
+  const plusFunction = () => {
     const data = {id, number: cart[id].number + 1, price: cart[id].price};
     setCart((cart: any) => ({...cart, [id]: data}));
   };
@@ -57,25 +58,11 @@ export const CartCard: React.FC<Props> = ({id}) => {
       <View>
         <Text style={styles.name}>{product.name}</Text>
         <Text style={styles.perItemWeight}>{product.perItemWeight}</Text>
-        <View style={{flexDirection: 'row', marginTop: 16}}>
-          <TouchableOpacity onPress={() => minusButotn()}>
-            <View style={styles.button}>
-              <MinusIcon
-                color={cart[id].number === 1 ? '#B3B3B3' : '#53B175'}
-              />
-            </View>
-          </TouchableOpacity>
-          <View style={styles.number}>
-            <Text style={{fontSize: 20, fontWeight: '600'}}>
-              {cart[id].number}
-            </Text>
-          </View>
-          <TouchableOpacity onPress={() => plusButton()}>
-            <View style={styles.button}>
-              <PlusIcon color="#53B175" />
-            </View>
-          </TouchableOpacity>
-        </View>
+        <PerNumber
+          plusFunction={() => plusFunction()}
+          minusFunction={() => minusFunction()}
+          number={cart[id].number}
+        />
       </View>
       <View style={styles.view3}>
         <TouchableOpacity onPress={() => deleteCard()}>
@@ -116,21 +103,6 @@ const styles = StyleSheet.create({
     fontSize: 21,
     lineHeight: 27,
     fontWeight: '600',
-  },
-  number: {
-    height: 46,
-    width: 46,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  button: {
-    height: 46,
-    width: 46,
-    borderRadius: 17,
-    borderWidth: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: '#E2E2E2',
   },
   view3: {
     width: 110,

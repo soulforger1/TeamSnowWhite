@@ -8,3 +8,4 @@ export * from './signInStep1';
 export * from './signInStep2';
 export * from './signInStep3';
 export * from './checkoutModal';
+export * from './productDetail';
