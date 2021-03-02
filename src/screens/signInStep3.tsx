@@ -16,7 +16,7 @@ import {BackIcon, LocationIcon} from '../assets';
 import {Button, Separator} from '../components';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-const background1 = require('../assets/sign-in-1.png');
+const background1 = require('../assets/images/sign-in-1.png');
 const {width, height} = Dimensions.get('window');
 
 const Selecter = ({label, choises, state, setState}: any) => {

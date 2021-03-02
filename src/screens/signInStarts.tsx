@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {CarrotIcon} from '../assets';
 import {Button} from '../components';
-const background = require('../assets/poster.png');
+const background = require('../assets/images/poster.png');
 const {height} = Dimensions.get('window');
 
 export const SignInStarts = () => {

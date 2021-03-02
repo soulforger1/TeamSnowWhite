@@ -13,9 +13,9 @@ import auth from '@react-native-firebase/auth';
 import {BackIcon} from '../assets';
 import {Separator} from '../components';
 import {useNavigation} from '@react-navigation/native';
-const background1 = require('../assets/sign-in-1.png');
-const background2 = require('../assets/sign-in-3.png');
-const mongolia = require('../assets/mongoliaFlag.png');
+const background1 = require('../assets/images/sign-in-1.png');
+const background2 = require('../assets/images/sign-in-3.png');
+const mongolia = require('../assets/images/mongoliaFlag.png');
 const {width} = Dimensions.get('window');
 
 export const SignInStep1 = () => {

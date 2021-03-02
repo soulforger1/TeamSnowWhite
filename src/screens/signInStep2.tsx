@@ -12,7 +12,7 @@ import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import {BackIcon} from '../assets';
 import {Separator} from '../components';
 const {width} = Dimensions.get('window');
-const background1 = require('../assets/sign-in-1.png');
+const background1 = require('../assets/images/sign-in-1.png');
 
 export const SignInStep2: React.FC<any> = (props) => {
   const {confirm} = props.route.params;
