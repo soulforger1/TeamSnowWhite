@@ -1,11 +1,20 @@
 import React from 'react';
 import {Dimensions, Pressable, StyleSheet, Text, View} from 'react-native';
+import {
+  AccountIcon,
+  CartIcon,
+  ExploreIcon,
+  FavouriteIcon,
+  ShopIcon,
+} from '../assets';
 const {width} = Dimensions.get('window');
 
 const ICON_SELECT: any = {
-  browse: '',
-  account: '',
-  search: '',
+  Shop: ShopIcon,
+  Explore: ExploreIcon,
+  Cart: CartIcon,
+  Favourite: FavouriteIcon,
+  Account: AccountIcon,
 };
 
 export const BottomBar: React.FC<any> = ({state, descriptors, navigation}) => {
@@ -37,13 +46,18 @@ export const BottomBar: React.FC<any> = ({state, descriptors, navigation}) => {
 
         return (
           <Pressable onPress={onPress} key={route.name}>
-            <View
-              style={[
-                styles.container,
-                isFocused ? {opacity: 1} : {opacity: 0.5},
-              ]}>
-              {/* <Icon color="white" /> */}
-              <Text style={{color: 'white', marginTop: 5, marginBottom: 10}}>
+            <View style={styles.container}>
+              <Icon color={isFocused ? '#53B175' : '#181716'} />
+              <Text
+                style={[
+                  isFocused ? {color: '#53B175'} : {color: '#181716'},
+                  {
+                    marginTop: 5,
+                    marginBottom: 10,
+                    fontSize: 15,
+                    fontWeight: '500',
+                  },
+                ]}>
                 {route.name}
               </Text>
             </View>
@@ -58,14 +72,22 @@ const styles = StyleSheet.create({
   main: {
     width: width,
     height: 80,
-    borderWidth: 1,
-    borderColor: '#28282B',
     borderTopRightRadius: 15,
     borderTopLeftRadius: 15,
-    backgroundColor: '#5555',
+    backgroundColor: 'white',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 5.46,
+    elevation: 9,
   },
   container: {
     width: width / 5,
     height: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
