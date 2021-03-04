@@ -43,7 +43,7 @@ export const CartCard: React.FC<Props> = ({id}) => {
   };
 
   useEffect(() => {
-    if (data !== null)
+    if (data !== null && data !== undefined)
       setProduct({
         poster: data.images[0],
         name: data.name,

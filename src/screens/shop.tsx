@@ -1,18 +1,46 @@
 import React, {useEffect} from 'react';
-import {FlatList, StatusBar, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {ShopCard} from '../components';
-import {useFireStoreCol} from '../hooks';
+import {ColoredCarrotIcon, LocationIcon} from '../assets';
+import {Search, ShopCard, Slider} from '../components';
+import {
+  Dimensions,
+  FlatList,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import {useCollectionSearch, useFireStoreCol, useFireStoreDoc} from '../hooks';
+import auth from '@react-native-firebase/auth';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+const vegetableSale = require('../assets/images/vegetableSalePoster.png');
+const {width} = Dimensions.get('window');
 
-export const Shop = () => {
-  const productsData = useFireStoreCol('products').collection;
-
+const SlideShow = ({tag}: any) => {
+  const exclusive = useCollectionSearch('products', 'tags', tag).collection;
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
+    <View style={{alignItems: 'center', height: 340}}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          width: width * 0.85,
+          marginBottom: 20,
+          marginTop: 20,
+        }}>
+        <Text style={{fontSize: 24, fontWeight: '600'}}>{tag}</Text>
+        <TouchableOpacity>
+          <Text style={{fontSize: 16, fontWeight: '600', color: '#53B175'}}>
+            See all
+          </Text>
+        </TouchableOpacity>
+      </View>
       <FlatList
-        data={productsData}
-        renderItem={({index, item}) => (
+        data={exclusive}
+        contentContainerStyle={{paddingLeft: 25}}
+        renderItem={({index, item}: any) => (
           <ShopCard
             image={item.images[0]}
             name={item.name}
@@ -21,9 +49,48 @@ export const Shop = () => {
             perItemWeight={item.perItemWeight}
           />
         )}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item: any) => item.id}
+        ItemSeparatorComponent={() => <View style={{width: 15}} />}
         horizontal
+        // nestedScrollEnabled
       />
+    </View>
+  );
+};
+
+export const Shop = () => {
+  const uid = auth().currentUser?.uid;
+  const productsData = useFireStoreCol('products').collection;
+  const userLocation = useFireStoreDoc(`users/${uid}`).doc;
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="dark-content" />
+      <ColoredCarrotIcon height={45} width={39} />
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginTop: 10,
+          marginBottom: 20,
+        }}>
+        <LocationIcon height={25} width={20} />
+        <Text style={styles.location}>
+          {userLocation ? userLocation.area : ''},
+          {userLocation ? userLocation.zone : ''}
+        </Text>
+      </View>
+      <ScrollView contentContainerStyle={{width: width, alignItems: 'center'}}>
+        <Search />
+        <Slider
+          data={[vegetableSale, vegetableSale, vegetableSale]}
+          width={370}
+          height={115}
+        />
+        <SlideShow tag="Exclusive Offer" />
+        <SlideShow tag="Best Selling" />
+        <SlideShow tag="drink" />
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -31,7 +98,12 @@ export const Shop = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: 'white',
     alignItems: 'center',
+  },
+  location: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#4C4F4D',
   },
 });

@@ -6,3 +6,5 @@ export * from './button';
 export * from './input';
 export * from './perNumber';
 export * from './detailCard';
+export * from './search';
+export * from './slider';

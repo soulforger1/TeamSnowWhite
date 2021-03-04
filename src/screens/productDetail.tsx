@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   Dimensions,
   Image,
@@ -12,15 +12,24 @@ import {
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {BackIcon, HearthIcon, ShareIcon} from '../assets';
 import {Button, DetailCard, PerNumber, Separator} from '../components';
-import {useFireStoreDoc} from '../hooks';
+import {useCollectionSearch, useFireStoreDoc} from '../hooks';
+import Auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import {cartContext} from '../provider/';
 const {width, height} = Dimensions.get('window');
 const greyBackground = require('../assets/images/greyBackground.png');
 
 export const ProductDetail: React.FC<any> = (props) => {
+  const uid = Auth().currentUser?.uid;
   const {id} = props.route.params;
+  const isFavourite = useCollectionSearch(
+    `users/${uid}/favourite`,
+    'productId',
+    id,
+  ).collection;
   const {cart, setCart} = useContext<any>(cartContext);
   const [number, setNumber] = useState(1);
+  const [hearthColor, setHearthColor] = useState<string>('');
   const navigation = useNavigation();
   const [product, setProduct] = useState<any>({
     name: '',
@@ -42,14 +51,29 @@ export const ProductDetail: React.FC<any> = (props) => {
     if (number !== 1) setNumber((number) => number - 1);
   };
 
+  const favouriteFunction = () => {
+    if (isFavourite.length !== 0)
+      firestore().collection(`users/${uid}/favourite`).doc(id).delete();
+    else
+      firestore()
+        .collection(`users/${uid}/favourite`)
+        .doc(id)
+        .set({productId: id});
+  };
+
   const addToBasket = () => {
     const data = {id, number: number, price: product.price};
     setCart({...cart, [id]: data});
   };
 
   useEffect(() => {
-    if (res !== null) setProduct(res);
+    if (res !== null && res !== undefined) setProduct(res);
   }, [res]);
+
+  useEffect(() => {
+    if (isFavourite.length === 0) setHearthColor('#7C7C7C');
+    else setHearthColor('red');
+  }, [isFavourite]);
 
   return (
     <View style={{flex: 1, alignItems: 'center'}}>
@@ -71,8 +95,8 @@ export const ProductDetail: React.FC<any> = (props) => {
             <Text style={styles.name}>{product.name}</Text>
             <Text style={styles.perItemWeight}>{product.perItemWeight}</Text>
           </View>
-          <TouchableOpacity>
-            <HearthIcon />
+          <TouchableOpacity onPress={() => favouriteFunction()}>
+            <HearthIcon color={hearthColor} />
           </TouchableOpacity>
         </View>
         <View style={styles.priceContainer}>
