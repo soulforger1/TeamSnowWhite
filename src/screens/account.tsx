@@ -1,13 +1,52 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {CarrotIcon} from '../assets';
+import auth from '@react-native-firebase/auth';
+import {useFireStoreDoc} from '../hooks';
+import {Separator} from '../components';
 
 export const Account = () => {
-  return <View style={styles.container}></View>;
+  const user: any = auth().currentUser;
+  const userData = useFireStoreDoc(`users/${user.uid}`).doc;
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <CarrotIcon color="#53B175" />
+      <Text style={styles.info}>Phone: {user.phoneNumber.split('+976')}</Text>
+      <Separator />
+      <Text style={styles.info}>Area: {userData && userData.area}</Text>
+      <Separator />
+      <Text style={styles.info}>Zone: {userData && userData.zone}</Text>
+      <TouchableOpacity>
+        <View style={styles.button}>
+          <Text style={{fontSize: 16, fontWeight: '500'}}>Sign Out</Text>
+        </View>
+      </TouchableOpacity>
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+  },
+  info: {
+    marginVertical: 15,
+    fontSize: 19,
+    lineHeight: 30,
+    fontWeight: '400',
+  },
+  button: {
+    opacity: 0.7,
+    height: 50,
+    width: 100,
+    borderRadius: 15,
+    borderWidth: 1,
+    backgroundColor: 'white',
+    borderColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
   },
