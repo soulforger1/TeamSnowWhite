@@ -1,3 +1,4 @@
+export * from './splashScreen';
 export * from './account';
 export * from './cart';
 export * from './explore';
