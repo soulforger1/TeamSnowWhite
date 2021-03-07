@@ -5,10 +5,17 @@ import {CarrotIcon} from '../assets';
 import auth from '@react-native-firebase/auth';
 import {useFireStoreDoc} from '../hooks';
 import {Separator} from '../components';
+import {useNavigation} from '@react-navigation/native';
 
 export const Account = () => {
   const user: any = auth().currentUser;
+  const navigation = useNavigation();
   const userData = useFireStoreDoc(`users/${user.uid}`).doc;
+
+  const signOut = () => {
+    auth().signOut();
+    navigation.navigate('splash');
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -18,7 +25,7 @@ export const Account = () => {
       <Text style={styles.info}>Area: {userData && userData.area}</Text>
       <Separator />
       <Text style={styles.info}>Zone: {userData && userData.zone}</Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => signOut()}>
         <View style={styles.button}>
           <Text style={{fontSize: 16, fontWeight: '500'}}>Sign Out</Text>
         </View>
