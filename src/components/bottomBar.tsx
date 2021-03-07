@@ -1,5 +1,6 @@
 import React from 'react';
 import {Dimensions, Pressable, StyleSheet, Text, View} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import {
   AccountIcon,
   CartIcon,
@@ -45,8 +46,8 @@ export const BottomBar: React.FC<any> = ({state, descriptors, navigation}) => {
         };
 
         return (
-          <Pressable onPress={onPress} key={route.name}>
-            <View style={styles.container}>
+          <View style={styles.container} key={route.name}>
+            <TouchableOpacity onPress={onPress} style={{alignItems: 'center'}}>
               <Icon color={isFocused ? '#53B175' : '#181716'} />
               <Text
                 style={[
@@ -60,8 +61,8 @@ export const BottomBar: React.FC<any> = ({state, descriptors, navigation}) => {
                 ]}>
                 {route.name}
               </Text>
-            </View>
-          </Pressable>
+            </TouchableOpacity>
+          </View>
         );
       })}
     </View>
