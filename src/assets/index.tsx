@@ -16,3 +16,4 @@ export * from './icons/accountIcon';
 export * from './icons/cartIcon';
 export * from './icons/exploreIcon';
 export * from './icons/titleIcon';
+export * from './icons/settings';

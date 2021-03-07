@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {
   FlatList,
@@ -12,8 +13,11 @@ import {Search} from '../components';
 import {useFireStoreCol} from '../hooks';
 
 const Card = ({color, poster, name}: any) => {
+  const navigation = useNavigation();
+
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('category', {category: name})}>
       <View style={[styles.cardMain, {borderColor: color}]}>
         <View style={[styles.cardBackground, {backgroundColor: color}]} />
         <Image source={{uri: poster}} style={styles.cardPoster} />

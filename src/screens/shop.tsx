@@ -14,11 +14,14 @@ import {
 import {useCollectionSearch, useFireStoreCol, useFireStoreDoc} from '../hooks';
 import auth from '@react-native-firebase/auth';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/native';
 const vegetableSale = require('../assets/images/vegetableSalePoster.png');
 const {width} = Dimensions.get('window');
 
 const SlideShow = ({tag}: any) => {
   const exclusive = useCollectionSearch('products', 'tags', tag).collection;
+  const navigation = useNavigation();
+
   return (
     <View style={{alignItems: 'center', height: 340}}>
       <View
@@ -31,7 +34,8 @@ const SlideShow = ({tag}: any) => {
           marginTop: 20,
         }}>
         <Text style={{fontSize: 24, fontWeight: '600'}}>{tag}</Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('category', {category: tag})}>
           <Text style={{fontSize: 16, fontWeight: '600', color: '#53B175'}}>
             See all
           </Text>
@@ -52,7 +56,6 @@ const SlideShow = ({tag}: any) => {
         keyExtractor={(item: any) => item.id}
         ItemSeparatorComponent={() => <View style={{width: 15}} />}
         horizontal
-        // nestedScrollEnabled
       />
     </View>
   );

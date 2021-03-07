@@ -2,7 +2,7 @@ import React from 'react';
 import {Dimensions} from 'react-native';
 import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
 import {CartProvider} from '../provider';
-import {CheckoutModal, ProductDetail, SplashScreen} from '../screens';
+import {Category, CheckoutModal, ProductDetail, SplashScreen} from '../screens';
 import {BottomNavigation, SignInNavigation} from './';
 const {height} = Dimensions.get('window');
 
@@ -32,6 +32,7 @@ export const MainNavigaiton = () => {
       <Stack.Navigator headerMode="none">
         <Stack.Screen name="splash" component={SplashScreen} />
         <Stack.Screen name="main" component={BottomNavigation} />
+        <Stack.Screen name="category" component={Category} />
         <Stack.Screen
           name="checkout-modal"
           component={CheckoutModal}
