@@ -65,7 +65,7 @@ export const CheckoutModal: React.FC<any> = (props) => {
           height={67}
           borderRadius={19}
           text="Place Order"
-          handler={() => console.log('handle')}
+          handler={() => navigation.navigate('orderAccepted')}
         />
       </View>
     </View>

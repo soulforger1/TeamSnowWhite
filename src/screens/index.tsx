@@ -11,3 +11,4 @@ export * from './signInStep3';
 export * from './checkoutModal';
 export * from './productDetail';
 export * from './category';
+export * from './orderAccepted';
