@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 interface ButtonProps {
@@ -36,23 +36,6 @@ export const Button: React.FC<ButtonProps> = ({
   });
 
   return (
-    // <View style={styles.container}>
-    //   <View style={styles.imageContainer}>
-    //     <Image source={{uri: image}} style={styles.image} />
-    //   </View>
-    //   <Text style={styles.name}>{name}</Text>
-    //   <Text style={styles.perItemWeight}>{perItemWeight}</Text>
-    //   <View style={styles.priceContainer}>
-    //     <Text style={styles.price}>${price}</Text>
-    //     <View
-    //       style={{
-    //         height: 45,
-    //         width: 45,
-    //         backgroundColor: '#53B175',
-    //         borderRadius: 17,
-    //       }}></View>
-    //   </View>
-    // </View>
     <View>
       <TouchableOpacity style={styles.btn} onPress={() => handler()}>
         <Text style={styles.btnText}>{text}</Text>

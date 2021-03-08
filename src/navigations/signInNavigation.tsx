@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {SignInStarts, SignInStep1, SignInStep2, SignInStep3} from '../screens';
-import {StatusBar, View} from 'react-native';
+import {View} from 'react-native';
 
 const Stack = createStackNavigator();
 

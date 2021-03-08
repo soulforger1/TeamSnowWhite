@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ColoredCarrotIcon, LocationIcon} from '../assets';
 import {Search, ShopCard, Slider} from '../components';

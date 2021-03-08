@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {CloseIcon, MinusIcon, PlusIcon} from '../assets';
+import {CloseIcon} from '../assets';
 import {useFireStoreDoc} from '../hooks';
 import {cartContext} from '../provider';
 import {PerNumber} from './perNumber';

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {
   AccountIcon,
@@ -22,13 +22,6 @@ export const BottomBar: React.FC<any> = ({state, descriptors, navigation}) => {
   return (
     <View style={[styles.main, {flexDirection: 'row'}]}>
       {state.routes.map((route: any, index: any) => {
-        const {options} = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
         const Icon = ICON_SELECT[route.name];
 
         const isFocused = state.index === index;

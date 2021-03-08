@@ -3,7 +3,7 @@ import React from 'react';
 import {Dimensions, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {BackIcon, SettingsIcon} from '../assets';
-import {ProductsRender, ShopCard} from '../components';
+import {ProductsRender} from '../components';
 import {useCollectionSearch} from '../hooks';
 const {width} = Dimensions.get('window');
 
