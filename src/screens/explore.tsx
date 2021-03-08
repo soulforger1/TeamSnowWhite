@@ -9,8 +9,23 @@ import {
   View,
 } from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {Search} from '../components';
-import {useFireStoreCol} from '../hooks';
+import {ProductsRender, Search} from '../components';
+import {useCollectionSearch, useFireStoreCol} from '../hooks';
+
+const CategoryRender = ({categories}: any) => {
+  return (
+    <FlatList
+      style={{paddingTop: 20}}
+      data={categories}
+      renderItem={({item, index}) => (
+        <Card color={item.color} poster={item.poster} name={item.name} />
+      )}
+      keyExtractor={(item) => item.name}
+      horizontal={false}
+      numColumns={2}
+    />
+  );
+};
 
 const Card = ({color, poster, name}: any) => {
   const navigation = useNavigation();
@@ -27,23 +42,25 @@ const Card = ({color, poster, name}: any) => {
   );
 };
 
-export const Explore = () => {
+export const Explore: React.FC<any> = (props) => {
+  const {search} = props.route.params;
   const categories = useFireStoreCol('categories').collection;
+  const searchResultName = useCollectionSearch(
+    'products',
+    'name',
+    search.toLowerCase(),
+  ).collection;
 
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Find Product</Text>
-      <Search />
-      <FlatList
-        style={{paddingTop: 20}}
-        data={categories}
-        renderItem={({item, index}) => (
-          <Card color={item.color} poster={item.poster} name={item.name} />
-        )}
-        keyExtractor={(item) => item.name}
-        horizontal={false}
-        numColumns={2}
-      />
+      <Search defaultText={search} />
+
+      {search !== '' ? (
+        <ProductsRender data={searchResultName} />
+      ) : (
+        <CategoryRender categories={categories} />
+      )}
     </SafeAreaView>
   );
 };

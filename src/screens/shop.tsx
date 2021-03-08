@@ -11,7 +11,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import {useCollectionSearch, useFireStoreCol, useFireStoreDoc} from '../hooks';
+import {useCollectionSearch, useFireStoreDoc} from '../hooks';
 import auth from '@react-native-firebase/auth';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
@@ -63,7 +63,6 @@ const SlideShow = ({tag}: any) => {
 
 export const Shop = () => {
   const uid = auth().currentUser?.uid;
-  const productsData = useFireStoreCol('products').collection;
   const userLocation = useFireStoreDoc(`users/${uid}`).doc;
 
   return (
@@ -84,7 +83,7 @@ export const Shop = () => {
         </Text>
       </View>
       <ScrollView contentContainerStyle={{width: width, alignItems: 'center'}}>
-        <Search />
+        <Search defaultText="" />
         <Slider
           data={[vegetableSale, vegetableSale, vegetableSale]}
           width={370}

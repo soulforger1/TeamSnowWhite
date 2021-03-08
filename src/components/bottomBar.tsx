@@ -41,7 +41,9 @@ export const BottomBar: React.FC<any> = ({state, descriptors, navigation}) => {
           });
 
           if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name);
+            if (route.name === 'Explore')
+              navigation.navigate(route.name, {search: ''});
+            else navigation.navigate(route.name);
           }
         };
 

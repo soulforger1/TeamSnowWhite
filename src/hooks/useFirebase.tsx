@@ -69,7 +69,8 @@ export const useCollectionSearch = (path: any, field: any, value: any) => {
           const array = events.filter((cur: any) => {
             var passed = false;
             cur[field].forEach((element: string) => {
-              if (element === value) passed = true;
+              if (element.toLowerCase().search(value.toLowerCase()) !== -1)
+                passed = true;
             });
             return passed;
           });

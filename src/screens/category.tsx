@@ -1,16 +1,9 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {
-  Dimensions,
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {Dimensions, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {BackIcon, SettingsIcon} from '../assets';
-import {ShopCard} from '../components';
+import {ProductsRender, ShopCard} from '../components';
 import {useCollectionSearch} from '../hooks';
 const {width} = Dimensions.get('window');
 
@@ -29,22 +22,7 @@ export const Category: React.FC<any> = (props) => {
         <Text style={styles.headerText}>{category}</Text>
         <SettingsIcon width={24} height={24} />
       </View>
-      <FlatList
-        data={collection}
-        renderItem={({item}) => (
-          <View style={{margin: 7.5}}>
-            <ShopCard
-              image={item.images[0]}
-              name={item.name}
-              price={item.price}
-              id={item.id}
-              perItemWeight={item.perItemWeight}
-            />
-          </View>
-        )}
-        numColumns={2}
-        keyExtractor={(item: any) => item.id}
-      />
+      <ProductsRender data={collection} />
     </SafeAreaView>
   );
 };
