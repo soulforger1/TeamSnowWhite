@@ -18,3 +18,4 @@ export * from './icons/exploreIcon';
 export * from './icons/titleIcon';
 export * from './icons/settings';
 export * from './icons/checkIcon';
+export * from './icons/rightArrow';
