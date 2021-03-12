@@ -1,20 +1,20 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
-import {Dimensions, StyleSheet, TextInput, View} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {CloseIcon, SearchIcon} from '../assets';
-const {width} = Dimensions.get('window');
+import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { Dimensions, StyleSheet, TextInput, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { CloseIcon, SearchIcon } from '../assets';
+const { width } = Dimensions.get('window');
 
 interface Props {
   defaultText: string;
 }
 
-export const Search: React.FC<Props> = ({defaultText}) => {
+export const Search: React.FC<Props> = ({ defaultText }) => {
   const [text, setText] = useState<string>(defaultText);
   const navigation = useNavigation();
 
-  const onKeyPress = () => {
-    navigation.navigate('Explore', {search: text});
+  const onKeyPress = (text: string) => {
+    navigation.navigate('Explore', { search: text });
   };
 
   return (
@@ -26,13 +26,13 @@ export const Search: React.FC<Props> = ({defaultText}) => {
         placeholder="Search Store"
         placeholderTextColor="#7C7C7C"
         onChangeText={(text) => setText(text)}
-        onSubmitEditing={onKeyPress}
+        onSubmitEditing={() => onKeyPress(text)}
       />
-      <TouchableOpacity onPress={() => setText('')}>
+      <TouchableOpacity onPress={() => { setText(''); onKeyPress('') }}>
         <View
           style={[
             styles.closeButton,
-            text !== '' ? {display: 'flex'} : {display: 'none'},
+            text !== '' ? { display: 'flex' } : { display: 'none' },
           ]}>
           <CloseIcon color="white" width={11} height={11} />
         </View>

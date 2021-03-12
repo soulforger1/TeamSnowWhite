@@ -17,7 +17,7 @@ export const FavouriteCard: React.FC<Props> = ({id}) => {
     const user: any = auth().currentUser;
     const data = useFireStoreDoc(`products/${id}`).doc;
     const navigation = useNavigation();
-    console.log(id)
+
     const [product, setProduct] = useState<any>({
         poster:
           'https://image.freepik.com/free-vector/salmon-sushi-with-chopstick-plate-cartoon-icon-illustration-japanese-food-icon-concept-isolated-flat-cartoon-style_138676-1727.jpg',
