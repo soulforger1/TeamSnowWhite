@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   Animated,
   Dimensions,
@@ -18,6 +18,19 @@ export const SignInStep2: React.FC<any> = (props) => {
   const {confirm} = props.route.params;
   const [code, setCode] = useState<string>('');
   const navigation = useNavigation();
+  const animationValue = useRef(new Animated.Value(0)).current;
+  const translateY = animationValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, -280],
+  });
+
+  const tranlateButton = () => {
+    Animated.timing(animationValue, {
+      toValue: 1,
+      duration: 400,
+      useNativeDriver: true,
+    }).start();
+  };
 
   const confirmCode = async () => {
     try {
@@ -62,11 +75,17 @@ export const SignInStep2: React.FC<any> = (props) => {
             placeholderTextColor="black"
             onChangeText={(text) => setCode(text)}
             keyboardType="phone-pad"
+            keyboardAppearance="light"
+            onFocus={tranlateButton}
           />
         </View>
         <Separator />
       </Animated.View>
-      <View style={[styles.nextButton]}>
+      <Animated.View
+        style={[
+          styles.nextButton,
+          {transform: [{translateY}, {rotate: '180deg'}]},
+        ]}>
         <TouchableOpacity onPress={() => confirmCode()}>
           <View
             style={{
@@ -80,7 +99,7 @@ export const SignInStep2: React.FC<any> = (props) => {
             <BackIcon color="white" />
           </View>
         </TouchableOpacity>
-      </View>
+      </Animated.View>
     </View>
   );
 };
@@ -117,7 +136,6 @@ const styles = StyleSheet.create({
     height: 25,
   },
   nextButton: {
-    transform: [{rotate: '180deg'}],
     position: 'absolute',
     bottom: 40,
     right: 40,

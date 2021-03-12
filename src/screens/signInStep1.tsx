@@ -7,6 +7,7 @@ import {
   StatusBar,
   Text,
   View,
+  KeyboardAvoidingView,
 } from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import auth from '@react-native-firebase/auth';
@@ -21,7 +22,6 @@ const {width} = Dimensions.get('window');
 export const SignInStep1 = () => {
   const navigation = useNavigation();
   const animationValue = useRef(new Animated.Value(0)).current;
-  const [confirm, setConfirm] = useState<any>(null);
   const [phone, setPhone] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const opacity = animationValue.interpolate({
@@ -32,11 +32,15 @@ export const SignInStep1 = () => {
     inputRange: [0, 1],
     outputRange: [0, -360],
   });
+  const translateYButton = animationValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [-400, 0],
+  });
   var inputRef = useRef<any>(null);
 
   const signInWithPhone = async () => {
     const confirmation = await auth().signInWithPhoneNumber('+976' + phone);
-    setConfirm(confirmation);
+    setIsFocused(false);
     navigation.navigate('step-2', {confirm: confirmation});
   };
 
@@ -108,17 +112,20 @@ export const SignInStep1 = () => {
             onChangeText={(text) => setPhone(text)}
             onFocus={() => setIsFocused(true)}
             keyboardType="phone-pad"
+            maxLength={8}
+            keyboardAppearance="light"
+            onSubmitEditing={() => signInWithPhone()}
           />
         </View>
         <Separator />
       </Animated.View>
-      <View
+      <KeyboardAvoidingView
         style={[
           styles.nextButton,
           isFocused ? {display: 'flex'} : {display: 'none'},
         ]}>
         <TouchableOpacity onPress={() => signInWithPhone()}>
-          <View
+          <Animated.View
             style={{
               height: 67,
               width: 67,
@@ -126,11 +133,12 @@ export const SignInStep1 = () => {
               borderRadius: 50,
               justifyContent: 'center',
               alignItems: 'center',
+              transform: [{translateY: translateYButton}],
             }}>
             <BackIcon color="white" />
-          </View>
+          </Animated.View>
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
       <Image source={background2} blurRadius={90} style={styles.background2} />
     </View>
   );
@@ -183,7 +191,7 @@ const styles = StyleSheet.create({
   nextButton: {
     transform: [{rotate: '180deg'}],
     position: 'absolute',
-    bottom: 40,
+    height: 200,
     right: 40,
     zIndex: 1,
   },

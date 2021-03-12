@@ -9,8 +9,14 @@ export const SplashScreen = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    if (user === null || user === undefined) navigation.navigate('sign-in');
-    else navigation.navigate('main');
+    if (user === null || user === undefined)
+      setTimeout(() => {
+        navigation.navigate('sign-in');
+      }, 1000);
+    else
+      setTimeout(() => {
+        navigation.navigate('main');
+      }, 1000);
   }, [user]);
 
   return (
