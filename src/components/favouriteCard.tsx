@@ -43,12 +43,10 @@ export const FavouriteCard: React.FC<Props> = ({id}) => {
                     <Text style={styles.name}>{product.name}</Text>
                     <Text style={styles.perItemWeight}>{product.perItemWeight}</Text>
                 </View>
-                
-                    <View style={styles.view3}>
-                        <Text style={styles.price}>${product.price}</Text>
-                        <RightArrow color='black'/>
-                    </View>
-                
+                <View style={styles.view3}>
+                    <Text style={styles.price}>${product.price}</Text>
+                    <RightArrow color='black'/>
+                </View>
             </View>
         </TouchableOpacity>
     )
