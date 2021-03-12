@@ -4,7 +4,10 @@ import auth from '@react-native-firebase/auth';
 import {useCollectionSearch, useFireStoreCol, useFireStoreDoc} from '../hooks';
 import {cartContext} from '../provider';
 import { BackIcon, RightArrow } from '../assets';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/native';
 const {width} = Dimensions.get('window');
+
 
 interface Props {
     id: string;
@@ -13,6 +16,7 @@ interface Props {
 export const FavouriteCard: React.FC<Props> = ({id}) => {
     const user: any = auth().currentUser;
     const data = useFireStoreDoc(`products/${id}`).doc;
+    const navigation = useNavigation();
     console.log(id)
     const [product, setProduct] = useState<any>({
         poster:
@@ -32,17 +36,21 @@ export const FavouriteCard: React.FC<Props> = ({id}) => {
           });
       }, [data]);
     return (
-        <View style={styles.container}>
-            <Image source={{uri: product.poster}} style={styles.poster} />
-            <View style={styles.view2}>
-                <Text style={styles.name}>{product.name}</Text>
-                <Text style={styles.perItemWeight}>{product.perItemWeight}</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('product-detail' , {id})}>
+            <View style={styles.container}>
+                <Image source={{uri: product.poster}} style={styles.poster} />
+                <View style={styles.view2}>
+                    <Text style={styles.name}>{product.name}</Text>
+                    <Text style={styles.perItemWeight}>{product.perItemWeight}</Text>
+                </View>
+                
+                    <View style={styles.view3}>
+                        <Text style={styles.price}>${product.price}</Text>
+                        <RightArrow color='black'/>
+                    </View>
+                
             </View>
-            <View style={styles.view3}>
-                <Text style={styles.price}>${product.price}</Text>
-                <RightArrow color='black'/>
-            </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 
@@ -54,7 +62,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     view2: {
-        width: width-230,
+        width: width-257,
         justifyContent: 'flex-start'
     },
     name: {
