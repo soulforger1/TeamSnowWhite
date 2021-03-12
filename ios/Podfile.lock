@@ -538,7 +538,7 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
-  - react-native-safe-area-context (3.1.9):
+  - react-native-safe-area-context (3.2.0):
     - React-Core
   - React-RCTActionSheet (0.63.4):
     - React-Core/RCTActionSheetHeaders (= 0.63.4)
@@ -603,7 +603,7 @@ PODS:
   - RNFBApp (10.8.1):
     - Firebase/CoreOnly (~> 7.6.0)
     - React-Core
-  - RNFBAuth (10.8.1):
+  - RNFBAuth (11.0.0):
     - Firebase/Auth (~> 7.6.0)
     - React-Core
     - RNFBApp
@@ -611,9 +611,9 @@ PODS:
     - Firebase/Firestore (~> 7.6.0)
     - React-Core
     - RNFBApp
-  - RNGestureHandler (1.10.1):
+  - RNGestureHandler (1.10.3):
     - React-Core
-  - RNScreens (2.17.1):
+  - RNScreens (2.18.1):
     - React-Core
   - RNSharedElement (0.7.0):
     - React
@@ -824,7 +824,7 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-safe-area-context: b6e0e284002381d2ff29fa4fff42b4d8282e3c94
+  react-native-safe-area-context: f0906bf8bc9835ac9a9d3f97e8bde2a997d8da79
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0
@@ -836,10 +836,10 @@ SPEC CHECKSUMS:
   React-RCTVibration: ae4f914cfe8de7d4de95ae1ea6cc8f6315d73d9d
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
   RNFBApp: 02bde3edecf2e9694b908a5d3504e03449980f20
-  RNFBAuth: 16f2b91bf53f398d83a15cff0dd52225967c1d78
+  RNFBAuth: 9e00d7b12f85527b4b7ce731cabcce9f46acfc02
   RNFBFirestore: 337b96bf5b1b2d32bb9fc4735afd47b16532dde8
-  RNGestureHandler: 5e58135436aacc1c5d29b75547d3d2b9430d052c
-  RNScreens: b6c9607e6fe47c1b6e2f1910d2acd46dd7ecea3a
+  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
+  RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
   RNSharedElement: 00b1a1420d213a34459bb9a5aacabb38107d7948
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
