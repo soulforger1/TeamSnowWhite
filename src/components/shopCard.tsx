@@ -2,6 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useContext} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import analytics from '@react-native-firebase/analytics';
 import {PlusIcon} from '../assets';
 import {cartContext} from '../provider/';
 
@@ -22,7 +23,12 @@ export const ShopCard: React.FC<Props> = ({
 }) => {
   const navigation = useNavigation();
   const {setCart} = useContext<any>(cartContext);
-  const addCart = () => {
+  const addCart = async () => {
+    await analytics().logEvent('cart', {
+      id: id,
+      item: name,
+    });
+
     const data = {id, number: 1, price: price};
     setCart((cart: any) => ({...cart, [id]: data}));
   };

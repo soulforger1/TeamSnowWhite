@@ -8,6 +8,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import analytics from '@react-native-firebase/analytics';
 import {CarrotIcon} from '../assets';
 import {Button} from '../components';
 const background = require('../assets/images/poster.png');
@@ -15,6 +16,18 @@ const {height} = Dimensions.get('window');
 
 export const SignInStarts = () => {
   const navigation = useNavigation();
+
+  const nextFunction =  async() => {
+    await analytics().logEvent('signInStarts', {
+      id: 3745092,
+      item: 'mens grey t-shirt',
+      description: ['round neck', 'long sleeved'],
+      size: 'L',
+    })
+
+    navigation.navigate('step-1')
+  }
+
   return (
     <ImageBackground source={background} style={styles.main}>
       <StatusBar barStyle="light-content" />
@@ -29,7 +42,7 @@ export const SignInStarts = () => {
           width={353}
           height={67}
           borderRadius={19}
-          handler={() => navigation.navigate('step-1')}
+          handler={() => nextFunction()}
         />
       </View>
     </ImageBackground>
